@@ -5,17 +5,13 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        dictionary = {}
+        dictionary = defaultdict(list)
         distances = []
         answer = []
         for point in points:
             distance = point[0]**2+point[1]**2
             distances.append(distance)
-            if distance in dictionary:
-                dictionary[distance].append(point)
-            else:
-                dictionary[distance] = []
-                dictionary[distance].append(point)
+            dictionary[distance].append(point)
         distances.sort()
         
         i = 0
