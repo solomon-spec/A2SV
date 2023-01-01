@@ -1,0 +1,29 @@
+def check_if_possible():
+        m = int(input())
+        stac = input().split(" ")
+        stack = [eval(i) for i in stac]
+        pt1 = 0
+        pt2 = m-1
+        last = 2**31
+        while pt1<pt2:
+            if stack[pt1]>=stack[pt2]:
+                if stack[pt1]>last:
+                    return "No" 
+                else:
+                    last = stack[pt1]
+                    pt1+=1
+            elif stack[pt1]<stack[pt2]:
+                if stack[pt2]>last:
+                    return "No"
+                else:
+                    last = stack[pt2]
+                    pt2-=1
+        return "Yes"
+            
+    
+
+for i in range(int(input())):
+    print(check_if_possible())
+    
+
+
