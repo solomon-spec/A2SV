@@ -4,14 +4,6 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        hashtable = defaultdict(int)
-        biggest  = nums[0]
+        nums.sort()
         
-        for number in nums:
-            hashtable[number] += 1
-        
-        for number in hashtable:
-            if hashtable[number]>hashtable[biggest]:
-                biggest = number
-                
-        return biggest
+        return nums[int(len(nums)/2)]
