@@ -10,7 +10,7 @@ class Solution(object):
                 if heights[j] < heights[j+1]:
                     heights[j],  heights[j+1] = heights[j + 1], heights[j]
                     names[j], names[j+1] = names[j+1], names[j]
-        return names"""
+        return names
         dic ={}
        
         answer = []
@@ -22,5 +22,27 @@ class Solution(object):
         for i in range(len(names)-1,-1,-1):
             answer.append(dic[heights[i]])
         
-        return answer
+        return answer"""
+        n = len(names)
+        for i in range(n):
+            maxx = i
+            for j in range(i,n):
+                if heights[j] > heights[maxx]:
+                    maxx = j
+            heights[maxx],heights[i] = heights[i], heights[maxx]
+            names[maxx], names[i] = names[i], names[maxx] 
+            
+        return names
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
