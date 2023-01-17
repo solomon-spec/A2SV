@@ -11,27 +11,30 @@ class Solution(object):
                     heights[j],  heights[j+1] = heights[j + 1], heights[j]
                     names[j], names[j+1] = names[j+1], names[j]
         return names
-        dic ={}
+        
        
-        answer = []
+        answer = []"""
+        dic ={}
         for i in range(len(names)):
             dic[heights[i]] = names[i]
             
-        heights.sort()
+        """heights.sort()
         
         for i in range(len(names)-1,-1,-1):
             answer.append(dic[heights[i]])
         
         return answer"""
         n = len(names)
-        for i in range(n):
-            maxx = i
-            for j in range(i,n):
-                if heights[j] > heights[maxx]:
-                    maxx = j
-            heights[maxx],heights[i] = heights[i], heights[maxx]
-            names[maxx], names[i] = names[i], names[maxx] 
+        for i in range(n-1):
+            j = i+1
+            current = heights[j]
+            while j>0 and current > heights[j-1]:
+                heights[j] = heights[j-1]
+                j -= 1
+            heights[j] = current
             
+        for i in range(n):
+            names[i] = dic[heights[i]]
         return names
             
         
