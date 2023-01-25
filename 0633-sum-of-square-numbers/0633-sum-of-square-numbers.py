@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: bool
         """
         left = 0
-        right = 46400
+        right = int(c**0.5)
         if c == 0:
             return True
         while left <= right:
