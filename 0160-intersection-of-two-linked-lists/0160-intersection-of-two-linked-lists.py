@@ -10,7 +10,7 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        nodes = set()
+        """nodes = set()
         cur1 = headA
         cur2 = headB
         while cur2:
@@ -19,5 +19,11 @@ class Solution(object):
         while cur1:
             if cur1 in nodes:
                 return cur1
-            cur1 = cur1.next
+            cur1 = cur1.next"""
+        cur1 = headA
+        cur2 = headB
+        while cur1 != cur2:
+            cur1 = cur1.next if cur1 else headB
+            cur2 = cur2.next if cur2 else headA
+        return cur1
             
