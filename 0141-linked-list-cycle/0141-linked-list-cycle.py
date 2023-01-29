@@ -10,7 +10,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        nodes = set()
+        """nodes = set()
         current = head
         while current:
             if current in nodes:
@@ -18,4 +18,11 @@ class Solution(object):
             else:
                 nodes.add(current)
             current = current.next
+        return False"""
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
         return False
