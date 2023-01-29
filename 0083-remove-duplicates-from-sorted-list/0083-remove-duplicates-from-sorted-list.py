@@ -9,7 +9,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        first = head
+        """first = head
         second = head
         while second:
             if first.val == second.val:
@@ -18,6 +18,13 @@ class Solution(object):
             else:
                 first = first.next
                 second = second.next
+        return head"""
+        current = head
+        while current and current.next:
+            if current.val == current.next.val:
+                current.next = current.next.next
+            else:
+                current = current.next
         return head
         
             
