@@ -10,7 +10,7 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        if not head or k == 1:
+        if k == 1:
             return head
         cur = head
         length = 0
@@ -18,15 +18,15 @@ class Solution(object):
             cur = cur.next
             length += 1
         cur = head
-        prevtai = None
+        x = length//k
         head1 = None
-        itteration = length//k
         prev_tail = None
-        for i in range(itteration):
+        for i in range(x):
             prev = None
             tail = cur
+            
             for j in range(k):
-                nex = cur.next
+                nex  = cur.next
                 cur.next = prev
                 prev = cur
                 cur = nex
@@ -34,11 +34,9 @@ class Solution(object):
                 head1 = prev
             if prev_tail:
                 prev_tail.next = prev
-            
             prev_tail = tail
         tail.next = cur
         return head1
-        
             
             
             
