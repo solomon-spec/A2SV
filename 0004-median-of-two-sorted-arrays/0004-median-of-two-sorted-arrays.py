@@ -5,11 +5,10 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
-        num = nums1 + nums2
-        num.sort()
+        num = sorted(nums1 + nums2)
         i = len(num)
         if i % 2 == 1:
             return num[i/2]
         else:
             print(num)
-            return float(num[i/2] + num[(i/2) -1])/2
+            return (num[i/2] + num[(i/2) -1])/2.0
