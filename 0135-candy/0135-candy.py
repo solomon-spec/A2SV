@@ -53,5 +53,4 @@ class Solution:
                 answer.append(1)   
         for i in answer:
             ans += (i**2 + i)/2
-        print(answer,valley,xxx)
         return int(ans -valley - xxx)
