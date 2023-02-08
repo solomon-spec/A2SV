@@ -40,9 +40,6 @@ class Solution:
                     if i - 1 >= 0 and ratings[i -1] > ratings[i]:
                         valley  += 1
                     inc = True
-                """if i - 1 > 0 and i + 1 < length:
-                    if (ratings[i - 1] == ratings[i] < ratings[i + 1]) and not prev_prev:
-                        xxx += 1"""
                 answer.append(leng)
                 prev_inc = False
             if len(answer) > 1 and prev_prev == True:
