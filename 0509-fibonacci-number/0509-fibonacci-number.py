@@ -4,11 +4,6 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        f = [0,1]
         if n < 2:
-            return f[n]
-        for i in range(2,n + 1):
-            num = f[0]+ f[1]
-            f[0] = f[1]
-            f[1] = num
-        return f[1]
+            return n
+        return self.fib(n - 1) + self.fib(n - 2)
