@@ -1,24 +1,14 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        letters = defaultdict(int)
-        pt1,pt2 = 0,0
-        maxx = 0
-        while pt2<len(s):
-            #print(letters)
-            if letters[s[pt2]] >0:
-                letters[s[pt1]] -=1
-                if letters[s[pt1]] == 0:
-                    del letters[s[pt1]]
-                pt1+=1
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        index = 0
+        answer = 0
+        dic = defaultdict()
+        for i in range(len(s)):
+            if s[i] in dic:
+                answer = max(answer,i-index)
+                index = max(index,dic[s[i]] + 1)
+                dic[s[i]] = i
             else:
-                letters[s[pt2]] = 1
-                pt2+=1
-            if len(letters) > maxx:
-                maxx = len(letters)
-        return maxx
-                
-                
+                dic[s[i]] = i
+        return max(answer, len(s) - index)
+            
