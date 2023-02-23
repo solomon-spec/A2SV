@@ -1,6 +1,5 @@
 class Solution:
     def shiftingLetters(self, s: str, shifts: List[List[int]]) -> str:
-        LETTERS =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         prefix= [0]*(len(s) + 1)
         for l,r,num in shifts:
             if num == 0:
@@ -15,5 +14,5 @@ class Solution:
         for i in range(len(s)):
             shift = prefix[i] % 26
             print(shift)
-            new.append(LETTERS[(ord(s[i]) - 97 + shift)%26])
+            new.append(chr((ord(s[i]) - 97 + shift)%26 + 97))
         return "".join(new)
