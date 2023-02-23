@@ -10,9 +10,9 @@ class Solution:
                 prefix[l] += 1
                 prefix[r + 1] -= 1
         prefixs = list(accumulate(prefix))
-        new = ""
+        new = []
         for i in range(len(s)):
             shift = prefixs[i] % 26
             print(shift)
-            new += LETTERS[(ord(s[i]) - 97 + shift)%26]
-        return new
+            new.append(LETTERS[(ord(s[i]) - 97 + shift)%26])
+        return "".join(new)
