@@ -9,10 +9,11 @@ class Solution:
             else:
                 prefix[l] += 1
                 prefix[r + 1] -= 1
-        prefixs = list(accumulate(prefix))
+        for i in range(1,len(prefix)):
+            prefix[i] += prefix[i-1]
         new = []
         for i in range(len(s)):
-            shift = prefixs[i] % 26
+            shift = prefix[i] % 26
             print(shift)
             new.append(LETTERS[(ord(s[i]) - 97 + shift)%26])
         return "".join(new)
