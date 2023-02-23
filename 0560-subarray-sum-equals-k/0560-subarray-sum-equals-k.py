@@ -9,6 +9,7 @@ class Solution:
             prefix += num
             answer += counter[prefix - k]
             counter[prefix] += 1
+            
         return answer
         
         
