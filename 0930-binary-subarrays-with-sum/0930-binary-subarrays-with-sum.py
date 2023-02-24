@@ -6,7 +6,6 @@ class Solution:
                 arr.append(i)
         arr.append(len(nums))
         answer = 0
-        print(arr)
         if k == 0:
             for i in range(1,len(arr)):
                 num = (arr[i] - arr[i - 1])
