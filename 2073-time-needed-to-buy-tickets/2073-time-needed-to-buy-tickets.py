@@ -4,12 +4,12 @@ class Solution:
         num = tickets[k]
         
         for i in tickets[:k + 1]:
-            summ = summ + i if i< num else summ + num
+            summ += min(num, i)
             
         if k + 1 == len(tickets):
             return summ
         
         for i in tickets[k + 1:]:
-            summ = summ + i if i < num else summ + num - 1
+            summ += min (i ,num - 1)
             
         return summ
