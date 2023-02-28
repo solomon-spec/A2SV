@@ -8,6 +8,6 @@ class Solution:
                 return fn(a*a % mod, n/2)
               return a * fn(a*a % mod, (n-1)/2)
         if n % 2 == 0:
-            return fn(20,int(n/2)) % (10**9 + 7)
+            return fn(20,int(n/2)) % mod
         else:
-            return (5 * fn(20,n//2)) % (10**9 + 7)
+            return (5 * fn(20,n//2)) % mod
