@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    @cache
+    #@cache
     def lcaDeepestLeaves(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         def maxDepth(root):
             if not root:
