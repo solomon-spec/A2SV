@@ -5,20 +5,43 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        self.isbst = True
         def check(root):
+            self.t = 3
             if not root:
-                return []
-            left = []
-            right = []
-            if root.left:
-                left = check(root.left)
-            if root.right:
-                right = check(root.right)
+                return (inf,-inf)
+            maxx = minn = None
             
-            return left + [root.val] + right
-        arr = check(root)
-        
-        for i in range(1,len(arr)):
-            if arr[i] <= arr[i-1]: return False
-        return True
+            if root.right:
+                minn = check(root.right)
+                
+            if root.left:
+                maxx = check(root.left)
+                
+                
+            if not maxx and not minn:
+                return (root.val,root.val)
+            
+            elif not minn:
+                if maxx[1] >= root.val:
+                    self.isbst = False
+                return (min(maxx[0],root.val),max(maxx[1],root.val))
+            
+            elif not maxx:
+                if minn[0] <= root.val:
+                    self.isbst = False
+                return (min(minn[0],root.val),max(minn[1],root.val))
+            else:
+                if minn[0] <= root.val or maxx[1] >= root.val:
+                     self.isbst = False
+                return (min(minn[0],root.val,maxx[0]),max(minn[1],root.val,maxx[1]))
+        check(root)
+        print(self.isbst)
+        return self.isbst
+            
+            
+            
+
+            
