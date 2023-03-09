@@ -3,6 +3,7 @@ class Solution:
         res = [[]]
         check = set()
         leng = 2**len(nums)
+        nums.sort()
         def backtrack(ans,arr):
             if len(res) == leng:
                 return
@@ -11,9 +12,9 @@ class Solution:
             
             ans.append(arr[0])
             backtrack(ans,arr[1:])
-            if tuple(sorted(ans)) not in check:
+            if tuple(ans) not in check:
                 res.append(ans.copy())
-                check.add(tuple(sorted(ans)))
+                check.add(tuple(ans))
             ans.pop()
             backtrack(ans,arr[1:])
             return
