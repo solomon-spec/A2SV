@@ -11,11 +11,8 @@ class Solution:
             if not root:
                 return 
             dict[depth].append(root.val)
-            level(root.right,depth + 1)
             level(root.left,depth + 1)
+            level(root.right,depth + 1)
             return 
         level(root,0)
-        ans = []
-        for i in dict:
-            ans.append(reversed(dict[i]))
-        return ans
+        return dict.values()
