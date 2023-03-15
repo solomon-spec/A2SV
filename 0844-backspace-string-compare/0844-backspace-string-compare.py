@@ -1,23 +1,18 @@
-class Solution(object):
-    def backspaceCompare(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        stack1 = []
-        stack2 = []
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        ls = []
+        lt = []
         for i in s:
-            if i == "#":
-                if stack1:
-                    stack1.pop()
+            if i != "#":
+                ls.append(i)
             else:
-                stack1.append(i)
+                if ls:
+                    ls.pop()
         for i in t:
-            if i == "#":
-                if stack2:
-                    stack2.pop()
+            if i != "#":
+                lt.append(i)
             else:
-                stack2.append(i)
+                if lt:
+                    lt.pop()
                 
-        return stack2 == stack1
+        return ls == lt
