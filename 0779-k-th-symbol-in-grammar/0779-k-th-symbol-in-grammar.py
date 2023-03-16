@@ -5,6 +5,7 @@ class Solution:
                 return 0
             else:
                 ans  = bit(n-1,ceil(k/2))
+                #print(n,ans,k)
                 if k % 2 != 0:
                     return ans
                 if ans == 0: return 1
