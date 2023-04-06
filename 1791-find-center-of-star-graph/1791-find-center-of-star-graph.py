@@ -1,9 +1,6 @@
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        dic = defaultdict(int)
-        for i in edges:
-            dic[i[1]] += 1
-            dic[i[0]] += 1
-        for i in dic:
-            if dic[i]  == len(edges): return i
+        if edges[0][0] in edges[1]:return edges[0][0]
+        else: return edges[0][1]
+                
             
