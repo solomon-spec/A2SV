@@ -6,12 +6,13 @@ class Solution:
             dic[i[0]].append(i[1])
             dic[i[1]].append(i[0])
         
-        def check(node):
-            nonlocal visited
+        def check(node,visited):
+            if node == destination:
+                return True
+            visited.add(node)
+            
             for i in dic[node]:
                 if i not in visited:
-                    visited.add(i)
-                    check(i)
-            return
-        check(source)
-        return destination in visited or source == destination
+                    if check(i,visited): return True
+            return False
+        return check(source,set())
