@@ -1,2 +1,3 @@
 # A2SV
-Collection of LeetCode questions to ace the coding interview! - Created using LeetHub
+Collection of LeetCode question solution with python
+
