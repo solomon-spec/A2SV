@@ -27,7 +27,6 @@ class Solution:
                     visited.add(i)
         maxx = max(ans)
         answer = []
-        print(ans)
         for i in range(len(ans)):
             if ans[i] == maxx: answer.append(i)
         return answer
