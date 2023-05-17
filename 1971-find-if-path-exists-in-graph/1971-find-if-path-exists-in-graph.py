@@ -1,18 +1,12 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        dic = defaultdict(list)
-        visited = set()
-        for i in edges:
-            dic[i[0]].append(i[1])
-            dic[i[1]].append(i[0])
+        parent = [i for i in range(n)]
         
-        def check(node,visited):
-            if node == destination:
-                return True
-            visited.add(node)
-            
-            for i in dic[node]:
-                if i not in visited:
-                    if check(i,visited): return True
-            return False
-        return check(source,set())
+        def find(child):
+            if child != parent[child]: 
+                parent[child] = find(parent[child])
+            return parent[child]
+        def union(ver1,ver2):
+            parent[find(ver1)] = find(ver2)
+        for x,y in edges: union(x,y)
+        return find(source) == find(destination)
