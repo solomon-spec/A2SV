@@ -16,10 +16,10 @@ class Solution:
             x = find(ver1)
             y = find(ver2)
             if rank[x] < rank[y]: 
-                parent[y] = x
+                parent[x] = y
                 rank[y] += rank[x]
             else:
-                parent[x] = y
+                parent[y] = x
                 rank[x] += rank[y]
             
         
