@@ -1,17 +1,13 @@
 class Solution:
     def isPossible(self, nums: List[int]) -> bool:
-        par = []
-        for num in nums:
-            found = False
-            for i in range(len(par)-1,-1,-1):
-                child = par[i]
-                if child[-1] + 1 == num: 
-                    child.append(num)
-                    found = True
-                    break
-            if not found:par.append([num])
-        for c in par:
-            if len(c) < 3: return False
+        tails = defaultdict(list)
+        for n in nums:
+            if tails[n - 1]:
+                heappush(tails[n], heappop(tails[n - 1]) + 1)
+            else:
+                heappush(tails[n], 1)
+        for i in tails:
+            if len(tails[i]) > 0 and heappop(tails[i]) < 3: return False
         return True
         
     
