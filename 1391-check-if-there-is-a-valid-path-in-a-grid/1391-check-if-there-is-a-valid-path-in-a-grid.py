@@ -4,7 +4,7 @@ class Solution:
         n = len(grid)
         m  = len(grid[0])
         parent = [i for i in range(n*m)]
-        
+        rank = [1 for i in range(n*m)]
         dire = [[0,-1],[0,1],[-1,0],[1,0]]
         dic = {1:[1,1,0,0],2:[0,0,1,1],3:[1,0,0,1],4:[0,1,0,1],5:[1,0,1,0],6:[0,1,1,0]}
         
@@ -13,7 +13,15 @@ class Solution:
                 parent[child] = find(parent[child])
             return parent[child]
         def union(ver1,ver2):
-            parent[find(ver1)] = find(ver2)
+            x = find(ver1)
+            y = find(ver2)
+            if rank[x] < rank[y]: 
+                parent[y] = x
+                rank[y] += rank[x]
+            else:
+                parent[x] = y
+                rank[x] += rank[y]
+            
         
         def is_valid(r,c):
             if 0 <= r < n and 0 <= c <m: return True
