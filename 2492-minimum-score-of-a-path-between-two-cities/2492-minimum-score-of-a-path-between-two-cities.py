@@ -15,6 +15,5 @@ class Solution:
             
         for i,j,k in roads:
             if find(i)==1: minn = min(minn,k)
-        print(parent)
         return minn
             
