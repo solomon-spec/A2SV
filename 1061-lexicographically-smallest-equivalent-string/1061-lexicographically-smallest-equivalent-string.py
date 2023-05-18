@@ -7,15 +7,16 @@ class Solution:
                 parent[child] = find(parent[child])
             return parent[child]
         def union(ver1,ver2):
-            parent[find(ver1)] = find(ver2)
+            letter1 = find(ver1)
+            letter2 = find(ver2)
+            if letter1 > letter2:
+                parent[letter1] = letter2
+            else:
+                parent[letter2] = letter1
         for i in range(len(s1)):
             union(s1[i],s2[i])
         ans = []
         for i in baseStr:
-            cur = i
-            par = find(i)
-            for let in parent:
-                if find(let) == par:cur = min(cur,let)
-            ans.append(cur)
+            ans.append(find(i))
         return "".join(ans)
         
