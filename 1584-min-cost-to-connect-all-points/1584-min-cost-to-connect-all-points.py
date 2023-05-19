@@ -29,9 +29,12 @@ class Solution:
         
         path.sort()
         ans = 0
+        e = 0
         for k,i,j in path:
             if union(i,j):
                 ans += k
+                e += 1
+            if e == len(points) -1: break
         return ans
             
             
