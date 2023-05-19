@@ -1,7 +1,7 @@
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         parent = [i for i in range(len(points))]
-        
+        rank = [1 for i in range(len(points))]
         def find(child):
             if child != parent[child]: 
                 parent[child] = find(parent[child])
@@ -11,9 +11,12 @@ class Solution:
             x = find(ver1)
             y = find(ver2)
             if x == y: return False
-            if x > y:
+            if rank[x] > rank[y]:
+                parent[y] = x
+                rank[x] += rank[y]
+            else: 
                 parent[x] = y
-            else: parent[y] = x
+                rank[y] += rank[x]
             return True
         path = [] 
         
