@@ -15,7 +15,7 @@ class Solution:
         def union(ver1,ver2):
             x = find(ver1)
             y = find(ver2)
-            if x[0] > y[0]:parent[x] = y
+            if x[0] < y[0]:parent[x] = y
             else: parent[y] = x
                 
         
