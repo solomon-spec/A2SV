@@ -4,14 +4,20 @@ class Solution:
         dic = defaultdict(set)
         for i in range(len(accounts)):
             dic[(i,accounts[i][0])] = set(accounts[i][1:])
+          
         parent = {(i,j):(i,j) for i,j in dic}
         
         def find(child):
             if child != parent[child]: 
                 parent[child] = find(parent[child])
             return parent[child]
+        
         def union(ver1,ver2):
-            parent[find(ver1)] = find(ver2)
+            x = find(ver1)
+            y = find(ver2)
+            if x[0] > y[0]:parent[x] = y
+            else: parent[y] = x
+                
         
         for per1 in dic:
             for per2 in dic:
