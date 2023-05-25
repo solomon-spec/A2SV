@@ -4,6 +4,5 @@ class Solution:
         cur_sum = 0
         for i in range(len(nums)):
             cur_sum += nums[i]
-            cur = ceil(cur_sum/(i+1))
-            best = max(best,cur)
+            best = max(best,ceil(cur_sum/(i+1)))
         return best
