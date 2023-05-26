@@ -20,7 +20,6 @@ class Solution:
         visited = set([1])
         while queue:
             x,y = queue.popleft()
-            if x == 14: print(graph[x],y)
             if graph[x] != -1 : x = graph[x]
             if x == n**2: return y
             for i in range(1,7):
