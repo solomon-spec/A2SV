@@ -1,16 +1,17 @@
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         memo = {}
-        def dp(cur,target):
-            if not target or not cur: return max(len(cur),len(target))
+        n,m = len(word1),len(word2)
+        def dp(w1,w2):
+            if w1 >= n or w2>=m : return max(n-w1,m-w2)
           
-            state = (cur,target)
+            state = (w1,w2)
             if state not in memo:
                 
-                if cur[0] == target[0]: memo[state]= dp(cur[1:],target[1:])
+                if word1[w1] == word2[w2]: memo[state]= dp(w1+1,w2+1)
                 else:
-                    memo[state] = min(dp(cur[1:],target),dp(cur,target[1:]),dp(cur[1:],target[1:])) + 1
+                    memo[state] = min(dp(w1+1,w2),dp(w1,w2+1),dp(w1+1,w2+1)) + 1
                     
             return memo[state]
-        return dp(word1,word2)
+        return dp(0,0)
             
