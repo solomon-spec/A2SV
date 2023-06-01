@@ -1,11 +1,8 @@
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
-        memo = defaultdict(int)
-        def dp(target):
-            if target < 0: return 0
-            if target == 0: return 1
-            if target not in memo:
-                for x in nums:
-                    memo[target] += dp(target-x)
-            return memo[target]
-        return dp(target)
+        arr = [1] + [0]*target
+        for i in range(1,target+1):
+            for x in nums:
+                if i-x >= 0:
+                    arr[i] += arr[i-x]
+        return arr[target]
