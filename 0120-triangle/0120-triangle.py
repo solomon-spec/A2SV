@@ -1,10 +1,6 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        memo = {}
-        def dp(x,y):
-            if x == len(triangle) - 1:
-                return triangle[x][y]
-            if (x,y) not in memo:
-                memo[(x,y)] = min(dp(x+1,y),dp(x+1,y+1))+ triangle[x][y]
-            return memo[(x,y)]
-        return dp(0,0)
+        for i in range(len(triangle)-2,-1,-1):
+            for j in range(i+1):
+                triangle[i][j] = min(triangle[i+1][j],triangle[i+1][j+1]) + triangle[i][j]
+        return triangle[0][0]
