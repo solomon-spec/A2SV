@@ -1,14 +1,11 @@
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
-        ans = [[0]*i for i in range(1,query_row+2)]
-        
-        ans[0][0] = poured
-        
-        for i in range(1,query_row+1):
-            for j in range(i+1):
-                if j == 0: ans[i][j] = (ans[i-1][j]-1)/2
-                elif j == i: ans[i][j] = (ans[i-1][j-1]-1)/2
-                else: ans[i][j] = max(0,(ans[i-1][j-1]-1)/2)+ max(0,(ans[i-1][j]-1)/2)
-                ans[i][j] = max(0,ans[i][j])
-        return min(1,ans[query_row][query_glass])
+        memo = defaultdict(int)
+        memo[(0,0)] = poured -1
+        def dp(x,y):
+            if y > x or y < 0: return 0
+            if (x,y) not in memo:
+                memo[(x,y)] = max(0,dp(x-1,y)/2) + max(0,dp(x-1,y-1)/2) -1
+            return memo[(x,y)]
+        return min(1,dp(query_row,query_glass) + 1)
         
