@@ -4,8 +4,9 @@
 function memoize(fn) {
     memo = {}
     return function(...args) {
-        if (!([fn,...args] in memo)) memo[[fn,...args]] = fn(...args)
-        return memo[[fn,...args]]
+        word = [fn,...args] 
+        if (!(word in memo)) memo[word] = fn(...args)
+        return memo[word]
     }
 }
 
