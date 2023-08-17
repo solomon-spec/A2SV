@@ -8,7 +8,7 @@ class Solution:
             if not count[num] or num == 0:    
                 continue
             
-            elif (num > 0 and num % 2 != 0) or count[num*(2**(-num/abs(num)))] < count[num]:  
+            elif count[num*(2**(-num/abs(num)))] < count[num]:  
 
                 return False
             
