@@ -1,4 +1,5 @@
 int  lowest[41][41];
+int dire[4][2] = {{0,1},{1,0},{-1,0},{0,-1}};
 class Solution {
     
 public:
@@ -8,9 +9,6 @@ public:
         queue<vector<int>> bfs;
         int row = grid.size();
         int col = grid[0].size();
-        
-        
-        vector<vector<int>> dire = {{0,1},{1,0},{-1,0},{0,-1}};
         bfs.push({0,0,0,0});
    
         while(bfs.size()){
