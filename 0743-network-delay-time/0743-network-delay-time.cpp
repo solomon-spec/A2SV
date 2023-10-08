@@ -14,17 +14,21 @@ public:
         return false;
     }
 };
+ int vis[101];
+int dis[101];
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        int vis[101];
+       
         memset(vis,0,sizeof vis);
-        int dis[101];
         memset(dis,-1, sizeof dis);
+        
         unordered_map<int,vector<vector<int>>> graph;
+        
         for(auto a: times){
             graph[a[0]].push_back({a[1],a[2]});
         }
+        
         priority_queue<PII, vector<PII>, Compare> queue;
         
         queue.push({0,k});
@@ -32,7 +36,6 @@ public:
         int max_dis = 0;
         while(queue.size()){
             auto cur = queue.top();
-            //cout<<cur[0]<<" "<<cur[1]<<endl;
             queue.pop();
             
             if(vis[cur.second]) continue;
