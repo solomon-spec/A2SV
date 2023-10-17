@@ -1,18 +1,18 @@
 class Solution {
+    long long dp[100003][2];
 public:
     long long maxAlternatingSum(vector<int>& nums) {
-        unordered_map<int,long long> pos;
-        
-        unordered_map<int,long long> neg;
-        for(int i = 0 ; i < nums.size(); i++){
-            pos[i] = max(pos[i-1],neg[i-1] + nums[i]);
-            neg[i] = max(neg[i-1],pos[i-1]- nums[i]);
+       memset(dp,0,sizeof dp);
+        dp[0][0] = nums[0];
+        dp[0][1] = 0;
+        for(int i = 1 ; i < nums.size(); i++){
+            dp[i][0] = max(dp[i-1][0],dp[i-1][1] + nums[i]);
+            dp[i][1] = max(dp[i-1][1],dp[i-1][0]- nums[i]);
         }
         
         long long ans = 0;
-        for(auto a: pos)ans = max(ans,a.second);
-        for(auto a: neg) ans = max(ans,a.second);
-        return ans;
+        
+        return max(dp[nums.size()-1][0],dp[nums.size()-1][1]);
         
         
     }
