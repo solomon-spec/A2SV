@@ -1,9 +1,6 @@
 class dsu{
     public:
         int parent[301];
-        dsu(int n){
-            for(int i = 0; i < n; i++)parent[i] = i;
-        }
         int find(int x){
             if(parent[x] != x) parent[x] = find(parent[x]);
             return parent[x];
@@ -15,7 +12,7 @@ class dsu{
         }
 };
 class Solution {
-    
+    dsu uf;
 public:
     bool check(string a, string b){
         int diff = 0;
@@ -23,7 +20,7 @@ public:
         return 2 >= diff;
     }
     int numSimilarGroups(vector<string>& strs) {
-        dsu uf(strs.size());
+        for(int i = 0; i < strs.size(); i++) uf.parent[i] = i;
          for(int i = 0; i < strs.size(); i++)
              for(int j = 0; j < strs.size(); j++){
                  if(check(strs[i],strs[j]))uf.uni(i,j);
