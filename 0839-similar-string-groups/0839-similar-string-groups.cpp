@@ -19,8 +19,7 @@ class Solution {
 public:
     bool check(string a, string b){
         int diff = 0;
-        for(int i = 0; i < a.size(); i++)
-            if(a[i] != b[i]) diff++;
+        for(int i = 0; i < a.size() && diff < 3; i++) if(a[i] != b[i]) diff++;
         return 2 >= diff;
     }
     int numSimilarGroups(vector<string>& strs) {
