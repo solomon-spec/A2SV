@@ -8,7 +8,8 @@ class dsu{
         void uni(int x, int y){
             int parx = find(x);
             int pary = find(y);
-            parent[parx] = pary;
+            if(pary > parx)parent[parx] = pary;
+            else parent[pary] = parx;
         }
 };
 class Solution {
