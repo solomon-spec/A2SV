@@ -1,18 +1,19 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        diffchar = 0
-        dic = defaultdict(int)
-        l = r = 0
-        maxlen = 0
-        while r < len(s):
-            dic[s[r]] += 1
-            r += 1
-            maxx = max(dic.values())
-            if r-l - maxx <= k:
-                maxlen = max(maxlen,r-l)
-            else:
-                dic[s[l]] -= 1
-                l += 1
-        if r-l - maxx <= k:
-            maxlen = max(maxlen,r-l)
-        return maxlen
+        l = 0
+        hashmap = defaultdict(int)
+        maxlength = 0
+        if len(set(s)) == 1:
+            return len(s)
+
+        for r in range(len(s)):
+            hashmap[s[r]]+=1
+            print(hashmap)
+
+            while max(hashmap.values()) + k < (r - l + 1) :
+                hashmap[s[l]]-=1
+                if hashmap[s[l]]==0:
+                    del hashmap[s[l]]
+                l+=1
+            maxlength=max(maxlength,r-l+1)
+        return maxlength
